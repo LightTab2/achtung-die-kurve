@@ -1,17 +1,22 @@
 #include <QTest>
+#include "MainWindow.h"
 
-class TestQString: public QObject
+class MainWindowTest : public QObject
 {
     Q_OBJECT
 private slots:
     void toUpper();
+private:
+    MainWindow win { nullptr };
 };
 
-void TestQString::toUpper()
+void MainWindowTest::toUpper()
 {
-    QString str = "Hello";
-    QCOMPARE(str.toUpper(), QString("HELLO"));
+    QQmlApplicationEngine engine;
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/achtung-die-kurve/mainWindow.qml")));
+    QCOMPARE(engine.rootObjects().isEmpty(), false);
 }
 
-QTEST_MAIN(TestQString)
+
+QTEST_MAIN(MainWindowTest)
 #include "testTest.moc"

@@ -1,8 +1,7 @@
 #pragma once
 #include <QtQuick>
 
-
-class MainWindow final : public QQuickWindow
+class MainWindow : public QQuickWindow
 {
 public:
                 MainWindow  (QWindow *parent = nullptr);

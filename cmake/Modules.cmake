@@ -1,2 +1,4 @@
-set(Modules)
-set(QtModules Core Gui Widgets)
+set(MODULES)
+set(MODULES_WITH_COMPONENTS Qt6)
+set(BOOST_COMPONENTS )
+set(QT_COMPONENTS Core Gui Quick Network) 
