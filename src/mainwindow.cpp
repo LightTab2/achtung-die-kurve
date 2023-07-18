@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "mainwindow.h"
 
 MainWindow::MainWindow(QWindow *parent) : QQuickWindow(parent)/*, ui(new Ui::MainWindow),
         host((ui->setupUi(this), this), &server, ui->statusLabel, ui->actionConnect),
