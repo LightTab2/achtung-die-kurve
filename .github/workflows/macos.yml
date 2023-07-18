@@ -60,7 +60,7 @@ jobs:
           cache-key-prefix: 'install-qt-action'
 
       - name: Configure
-        run: cmake -Bbuild -D${{ steps.repoName.outputs.name }}_QT_QUICK -DCMAKE_TOOLCHAIN_FILE="conan/conan_toolchain.cmake"
+        run: cmake -Bbuild -D${{ steps.repoName.outputs.name }}_QT_QUICK="ON" -DCMAKE_TOOLCHAIN_FILE="conan/conan_toolchain.cmake"
 
       - name: Build
         run: cmake --build build --config release --target install -j4
