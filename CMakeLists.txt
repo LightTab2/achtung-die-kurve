@@ -113,7 +113,8 @@ target_include_directories(${PROJECT_NAME}
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            ${CMAKE_INCLUDE_PATH} 
                            PRIVATE
-                           ${CMAKE_CURRENT_SOURCE_DIR}/src)
+                           ${CMAKE_CURRENT_SOURCE_DIR}/src
+                           ${CMAKE_CURRENT_SOURCE_DIR}/src/qml)
 target_link_directories(${PROJECT_NAME}
                         PRIVATE
                         ${CMAKE_LIBRARY_PATH})
@@ -124,7 +125,8 @@ if(${PROJECT_NAME}_BUILD_EXECUTABLE)
                                $<INSTALL_INTERFACE:include>
                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                                ${CMAKE_INCLUDE_PATH} 
-                               ${CMAKE_CURRENT_SOURCE_DIR}/src)
+                               ${CMAKE_CURRENT_SOURCE_DIR}/src
+                               ${CMAKE_CURRENT_SOURCE_DIR}/src/qml)
     target_link_directories(${PROJECT_NAME}_LIB
                             PRIVATE
                             ${CMAKE_LIBRARY_PATH})
@@ -153,11 +155,12 @@ foreach(library IN LISTS BOOST_COMPONENTS)
     endif()
 endforeach()
 
+string(REPLACE "-" "_" QML_URI "${PROJECT_NAME}")
 # Resources
 include(cmake/Resources.cmake)
 if (${PROJECT_NAME}_QT_QUICK)
     qt_add_qml_module(${PROJECT_NAME}
-                      URI ${PROJECT_NAME}-qml
+                      URI ${QML_URI} 
                       RESOURCE_PREFIX "/qt/qml/"
                       QML_FILES ${QML_FILES}
                       RESOURCES ${RESOURCES}
