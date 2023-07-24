@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine; 
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/achtung-die-kurve/mainWindow.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/achtung_die_kurve/mainWindow.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 

@@ -13,7 +13,7 @@ private:
 void MainWindowTest::toUpper()
 {
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/achtung-die-kurve/mainWindow.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/achtung_die_kurve/mainWindow.qml")));
     QCOMPARE(engine.rootObjects().isEmpty(), false);
 }
 

@@ -1,7 +1,6 @@
 #pragma once
 #include <QtQuick>
 
-
 class MainWindow final : public QQuickWindow
 {
 public:
@@ -20,8 +19,6 @@ protected:
 
 private:
     void        gameTick    ();
-    //std::unique_ptr<Ui::MainWindow>             ui;
-    //std::vector<std::unique_ptr<MainWindow> >   mockClients;        //Debug
 
     /*Host        host;
     Connect     con;
