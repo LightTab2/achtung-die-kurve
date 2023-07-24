@@ -224,3 +224,4 @@ install(SCRIPT ${DEPLOY_SCRIPT})
 enable_testing(true)
 add_subdirectory(test)
 
+include(include/libqnanopainter/CMakeLists.txt)
