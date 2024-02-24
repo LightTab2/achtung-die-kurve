@@ -1,0 +1,46 @@
+import QmlProject
+
+Project {
+    mainFile: "content/App.qml"
+    mainUiFile: "content/LobbyScreen.qml"
+
+    /* Include .qml, .js, and image files from current directory and subdirectories */
+    QmlFiles {
+        directory: "../../src/qml/"
+    }
+
+    ImageFiles {
+        directory: "../../icon"
+    }
+
+    importPaths: [ "../../src/qml/"]
+
+    Environment {
+        QT_AUTO_SCREEN_SCALE_FACTOR: "1"
+        QML_COMPAT_RESOLVE_URLS_ON_ASSIGNMENT: "1"
+        QT_LOGGING_RULES: "qt.qml.connections=false"
+        QT_ENABLE_HIGHDPI_SCALING: "0"
+        /* Useful for debugging
+       QSG_VISUALIZE=batches
+       QSG_VISUALIZE=clip
+       QSG_VISUALIZE=changes
+       QSG_VISUALIZE=overdraw
+       */
+    }
+
+    qt6Project: true
+
+    /* Required for deployment */
+    targetDirectory: "/opt/AchtungDieKurveDesktop"
+
+    qdsVersion: "4.1"
+
+    quickVersion: "6.5"
+
+    /* If any modules the project imports require widgets (e.g. QtCharts), widgetApp must be true */
+    widgetApp: true
+
+    multilanguageSupport: true
+    supportedLanguages: ["en", "pl"]
+    primaryLanguage: "en"
+}
