@@ -1,6 +1,6 @@
-import QtQuick 6.5
-import QtQuick.Controls 6.5
 import achtung_die_kurve
+import QtQuick
+import QtQuick.Controls
 
 Rectangle {
     id: rectangle

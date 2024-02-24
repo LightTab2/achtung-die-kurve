@@ -1,18 +1,50 @@
 #pragma once
-#include <qqml.h>
-#include <QContext2D>
+#include <QQuickPaintedItem>
 
-class GameCanvas : public QAbstractTableModel
+#include <gsl/gsl>
+
+#include <Game/Data/Settings/GameSettings.h>
+
+class GameCanvas : public QQuickPaintedItem
 {
     Q_OBJECT
     QML_ELEMENT
 
 public:
-    int rowCount(const QModelIndex & = QModelIndex()) const override;
+    Q_PROPERTY(int boardSize MEMBER boardSize_ NOTIFY boardSizeChanged)
 
-    int columnCount(const QModelIndex & = QModelIndex()) const override;
+    // Constructor
+    GameCanvas(QQuickItem* parent = nullptr) noexcept;
+    // Disallow copy
+    GameCanvas(const GameCanvas&)            = delete;
+    GameCanvas& operator=(const GameCanvas&) = delete;
+    // Allow move
+    GameCanvas(GameCanvas&&)            noexcept = default;
+    GameCanvas& operator=(GameCanvas&&) noexcept = default;
+    // Virtual destructor
+    virtual ~GameCanvas() = default;
 
-    QVariant data(const QModelIndex& index, int role) const override;
+    void setRenderImage(gsl::not_null<const QImage*> boardImage);
 
-    QHash<int, QByteArray> roleNames() const override;
+    void paint(QPainter* painter) override;
+
+public slots:
+    void updateBoardSize(int boardSize);
+
+signals: 
+    void boardSizeChanged();
+    void drawHeads(QImage* image);
+
+protected:
+    void geometryChange(const QRectF& newGeometry, const QRectF& oldGeometry) override;
+
+private:
+    /// Image that will be painted on the canvas. 
+    ///
+    /// It should contain all the game drawn elements: board, player's trails, powerups and status messages
+    const QImage* boardImage_ = nullptr;
+
+    QRectF boardRect_{};
+
+    int boardSize_ = 512;
 };

@@ -27,4 +27,4 @@ QHash<int, QByteArray> LobbyTableModel::roleNames() const
     return { {Qt::DisplayRole, "display"} };
 }
 
-#include "LobbyTableModel.moc"
+//#include "LobbyTableModel.moc"

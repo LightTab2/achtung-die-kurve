@@ -48,9 +48,6 @@ foreach(file ${TEST_FILES})
                             PRIVATE
                             ${CMAKE_LIBRARY_PATH})
 
-    target_include_directories(${test_name}_Tests
-                               PRIVATE
-                               ${CMAKE_SOURCE_DIR}/src)
     target_link_libraries(${test_name}_Tests PRIVATE Qt6::Test)
 
     # Link libraries

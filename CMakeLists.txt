@@ -9,12 +9,12 @@ foreach(library IN LISTS MODULES)
     find_package(${library} REQUIRED)
 endforeach()
 
-foreach(library IN LISTS MODULES_WITH_COMPONENTS)
-    find_package(${library} REQUIRED)
-endforeach()
-
 foreach(library IN LISTS QT_COMPONENTS)
     find_package(Qt6 COMPONENTS ${library} REQUIRED)
+    string(TOLOWER "${library}" library_lower)
+    if (library_lower STREQUAL "quick")
+        set(${PROJECT_NAME}_QT_QUICK ON)
+    endif()
 endforeach()
 
 set(Boost_USE_STATIC_LIBS OFF) 
@@ -155,9 +155,9 @@ foreach(library IN LISTS BOOST_COMPONENTS)
     endif()
 endforeach()
 
-string(REPLACE "-" "_" QML_URI "${PROJECT_NAME}")
 # Resources
 include(cmake/Resources.cmake)
+string(REPLACE "-" "_" QML_URI "${PROJECT_NAME}")
 if (${PROJECT_NAME}_QT_QUICK)
     qt_add_qml_module(${PROJECT_NAME}
                       URI ${QML_URI} 
@@ -223,4 +223,3 @@ install(SCRIPT ${DEPLOY_SCRIPT})
 # Unit testing setup
 enable_testing(true)
 add_subdirectory(test)
-

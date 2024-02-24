@@ -47,38 +47,6 @@ struct MessageType
     static const unsigned char sendInput    = 0x82;
 };
 
-struct GameSettings
-{
-    static void             sendGameSettings(ManagedConnection *connection);
-    static void             loadGameSettings(QByteArray arr);
-
-    static unsigned         BOARD_SIZE;
-    static unsigned         WALL_THICKNESS;
-    static unsigned         PLAYER_SIZE;
-    static unsigned         LINE_SIZE;
-    static unsigned         NO_DRAW_MIN;
-    static unsigned         NO_DRAW_MAX;
-    static unsigned         COLLISION_DRAW_FIRST_IGNORE;
-    static unsigned         DATA_SEND_TIMEOUT;
-    static unsigned         WIN_TIME;
-    static unsigned         GRACE_TIME;
-    static unsigned         FREEZE_TIME;
-    static unsigned         TICK_RATE;
-    static unsigned         FREEZE_FONT_SIZE;
-    static unsigned         WIN_FONT_SIZE;
-    static unsigned         NAME_FONT_SIZE;
-    static float            SPEED;
-    static float            ANGLE_SPEED;
-    static double           NO_DRAW_CHANCE;
-};
-
-struct NetworkSettings
-{
-    static unsigned         TIMEOUT;
-    static unsigned         PING_INTERVAL;
-    static unsigned short   UDP_PORT_START;
-};
-
 //Stanowi prosty licznik, który powraca do 0, gdy przekroczy swój zakres
 //Zlicza ile razy przekroczył swój zakres, co może być użyte do porównywania dwóch obiektów tej klasy
 //Bardziej optymalna struktura, ale podatna na błędy (potrzeba lepszego testowania)
